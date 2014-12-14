@@ -148,6 +148,7 @@ namespace gbrainy.Clients.Classical
 
 			drawing_area = new GameDrawingArea ();
 			drawing_area.Drawable = session;
+            drawing_area.SetSizeRequest (drawing_vbox.WidthRequest, drawing_vbox.HeightRequest);
 			GameSensitiveUI ();
 
 			EventBox eb = new EventBox (); // Provides a window for drawing area windowless widget
