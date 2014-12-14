@@ -55,6 +55,7 @@ namespace gbrainy.Clients.Classical.Dialogs
 
 			drawing_area = new GameDrawingArea ();
 			drawing_area.UseSolutionArea = false;
+                        drawing_area.SetSizeRequest (preview_vbox.WidthRequest, preview_vbox.HeightRequest);
 			preview_vbox.Add (drawing_area);
 			drawing_area.Visible = true;
 			treeview.HeadersClickable = true;
