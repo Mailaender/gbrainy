@@ -32,8 +32,8 @@ namespace gbrainy.Clients.Classical.Dialogs
 	{
 		// This is static to allow to preserve the selection in different instances
 		static ListStore games_store;
-		[GtkBeans.Builder.Object] Gtk.TreeView treeview;
-		[GtkBeans.Builder.Object] Box preview_vbox;
+		[Builder.Object] Gtk.TreeView treeview;
+		[Builder.Object] Box preview_vbox;
 		GameDrawingArea drawing_area;
 		GameSession session;
 		GameLocator [] games;
@@ -175,7 +175,7 @@ namespace gbrainy.Clients.Classical.Dialogs
 			games_store = null;
 		}
 
-		int GameSort (Gtk.TreeModel model, Gtk.TreeIter a, Gtk.TreeIter b)
+		int GameSort (Gtk.ITreeModel model, Gtk.TreeIter a, Gtk.TreeIter b)
 		{
 			string name_a, name_b;
 			int sort_column_id;
@@ -224,7 +224,7 @@ namespace gbrainy.Clients.Classical.Dialogs
 
 		void OnSelectAll (object sender, EventArgs args)
 		{
-			games_store.Foreach (delegate (TreeModel model, TreePath path, TreeIter iter)  {
+			games_store.Foreach (delegate (ITreeModel model, TreePath path, TreeIter iter)  {
 				games_store.SetValue (iter, COL_ENABLED, true);
 				return false;
 			});
@@ -232,7 +232,7 @@ namespace gbrainy.Clients.Classical.Dialogs
 
 		void OnUnSelectAll (object sender, EventArgs args)
 		{
-			games_store.Foreach (delegate (TreeModel model, TreePath path, TreeIter iter)  {
+			games_store.Foreach (delegate (ITreeModel model, TreePath path, TreeIter iter)  {
 				games_store.SetValue (iter, COL_ENABLED, false);
 				return false;
 			});
@@ -244,7 +244,7 @@ namespace gbrainy.Clients.Classical.Dialogs
 
 			play_list = new List <int> ();
 
-			games_store.Foreach (delegate (TreeModel model, TreePath path, TreeIter iter)  {
+			games_store.Foreach (delegate (ITreeModel model, TreePath path, TreeIter iter)  {
 				bool enabled = (bool) games_store.GetValue (iter, COL_ENABLED);
 
 				if (enabled == true) {

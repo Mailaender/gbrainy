@@ -26,8 +26,8 @@ namespace gbrainy.Clients.Classical.Widgets
 	// Build and manages gbrainy's client Toolbar
 	public class Toolbar : Gtk.Toolbar
 	{
-		Gtk.HBox main_hbox;
-		Gtk.VBox framework_vbox;
+		Gtk.Box main_hbox;
+		Gtk.Box framework_vbox;
 
 		public ToolButton AllButton {get; private set; }
 		public ToolButton CalculationButton {get; private set; }
@@ -38,7 +38,7 @@ namespace gbrainy.Clients.Classical.Widgets
 		public ToolButton VerbalButton {get; private set; }
 		public bool InitCompleted {get; private set; }
 
-		public Toolbar (Gtk.HBox main_hbox, Gtk.VBox framework_vbox)
+		public Toolbar (Gtk.Box main_hbox, Gtk.Box framework_vbox)
 		{
 			this.main_hbox = main_hbox;
 			this.framework_vbox = framework_vbox;

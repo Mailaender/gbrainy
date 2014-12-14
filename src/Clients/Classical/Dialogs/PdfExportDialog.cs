@@ -29,16 +29,16 @@ namespace gbrainy.Clients.Classical.Dialogs
 {
 	public class PdfExportDialog : BuilderDialog
 	{
-		[GtkBeans.Builder.Object] Gtk.HBox hbox_file;
-		[GtkBeans.Builder.Object] Gtk.SpinButton games_spinbutton;
-		[GtkBeans.Builder.Object] Gtk.CheckButton colorblindcheckbutton;
-		[GtkBeans.Builder.Object] Gtk.RadioButton rb_easy;
-		[GtkBeans.Builder.Object] Gtk.RadioButton rb_medium;
-		[GtkBeans.Builder.Object] Gtk.RadioButton rb_master;
-		[GtkBeans.Builder.Object] Gtk.CheckButton checkbox_logic;
-		[GtkBeans.Builder.Object] Gtk.CheckButton checkbox_calculation;
-		[GtkBeans.Builder.Object] Gtk.CheckButton checkbox_verbal;
-		[GtkBeans.Builder.Object] Gtk.ComboBox layout_combo;
+		[Builder.Object] Gtk.HBox hbox_file;
+		[Builder.Object] Gtk.SpinButton games_spinbutton;
+		[Builder.Object] Gtk.CheckButton colorblindcheckbutton;
+		[Builder.Object] Gtk.RadioButton rb_easy;
+		[Builder.Object] Gtk.RadioButton rb_medium;
+		[Builder.Object] Gtk.RadioButton rb_master;
+		[Builder.Object] Gtk.CheckButton checkbox_logic;
+		[Builder.Object] Gtk.CheckButton checkbox_calculation;
+		[Builder.Object] Gtk.CheckButton checkbox_verbal;
+		[Builder.Object] Gtk.ComboBox layout_combo;
 
 		BrowseFile file;
 		GameManager manager;
@@ -182,7 +182,7 @@ namespace gbrainy.Clients.Classical.Dialogs
 			md.Destroy ();
 		}
 
-		static public void ComboBoxCellFunc (CellLayout cell_layout, CellRenderer cell, TreeModel tree_model, TreeIter iter)
+		static public void ComboBoxCellFunc (ICellLayout cell_layout, CellRenderer cell, ITreeModel tree_model, TreeIter iter)
 		{
 			string name = (string)tree_model.GetValue (iter, 0);
 			(cell as CellRendererText).Text = name;

@@ -70,7 +70,7 @@ fi
 
 dnl -- check for various mono assemblies that we need.
 
-needed_assemblies="Mono.Posix Mono.Cairo Mono.CSharp"
+needed_assemblies="Mono.Posix Mono.CSharp"
 for i in $needed_assemblies; do
   AC_MSG_CHECKING([for $i.dll])
   if test ! \( -e `$PKG_CONFIG --variable=prefix mono`/lib/mono/2.0/$i.dll -o -e `$PKG_CONFIG --variable=prefix mono`/lib64/mono/2.0/$i.dll \); then
@@ -86,14 +86,14 @@ done
 
 dnl --- Required libraries
 
-GTKSHARP_REQUIRED=2.10
+GTKSHARP_REQUIRED=2.99.1
 MONO_REQUIRED=1.1.7
-MONO_ADDINS=0.3
+MONO_ADDINS=0.2.0
 CANBERRA_GTK_REQUIRED=0.26
 
 PKG_CHECK_MODULES(GBRAINY_CORE, mono >= $MONO_REQUIRED)
 
-PKG_CHECK_MODULES(GBRAINY, gtk-sharp-2.0 >= $GTKSHARP_REQUIRED)
+PKG_CHECK_MODULES(GBRAINY, gtk-sharp-3.0 >= $GTKSHARP_REQUIRED)
 PKG_CHECK_MODULES(GBRAINY, libcanberra-gtk  >= $CANBERRA_GTK_REQUIRED)
 AC_SUBST(GBRAINY_LIBS)
 
@@ -101,10 +101,10 @@ AC_ARG_ENABLE(addins, AC_HELP_STRING([--disable-addins], [Disable mono-addins su
 
 enable_addins_sharp="${enable_addins}"
 
-PKG_CHECK_MODULES(MONO_ADDINS,
-	mono-addins >= $MONO_ADDINS
-	mono-addins-setup >= $MONO_ADDINS
-	mono-addins-gui >= $MONO_ADDINS,
+ PKG_CHECK_MODULES(MONO_ADDINS,
+	mono-addins0.2 >= $MONO_ADDINS
+	mono-addins0.2-setup >= $MONO_ADDINS
+	mono-addins0.2-gui >= $MONO_ADDINS,
 	enable_addins_sharp="$enable_addins_sharp", enable_addins_sharp=no)
 
 if test "x$enable_addins" = "xyes" -a "x$enable_addins_sharp" = "xno"; then
