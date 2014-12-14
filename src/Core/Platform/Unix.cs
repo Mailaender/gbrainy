@@ -42,7 +42,7 @@ namespace gbrainy.Core.Platform
 		[DllImport("libgtk-win32-2.0-0.dll")]
 		static extern unsafe bool gtk_show_uri(IntPtr screen, IntPtr uri, uint timestamp, out IntPtr error);
 
-		[DllImport ("libcanberra-gtk.so.0")]
+		[DllImport ("libcanberra-gtk3.so.0")]
 		static extern void ca_gtk_play_for_widget (IntPtr widget, uint id, string name1, string prop1, string name2, string prop2, IntPtr nil);
 
 		/* Taken from locale.h  */
