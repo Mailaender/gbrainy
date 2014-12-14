@@ -17,8 +17,6 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#if !CSHARP_STATIC
-
 using System;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -115,4 +113,3 @@ namespace gbrainy.Core.Libraries
 	}
 }
 
-#endif

@@ -76,8 +76,6 @@ CSDISTFILES =  \
 		$(srcdir)/Services/MemoryConfiguration.cs \
 		$(srcdir)/Services/DefaultServices.cs	\
 		$(srcdir)/Services/ICSharpCompiler.cs	\
-		$(srcdir)/Libraries/CSharpCompilerStatic.cs	\
-		$(srcdir)/Libraries/CSharpCompilerStaticDomainProxy.cs	\
 		$(srcdir)/Libraries/CSharpCompiler.cs
 
 CSFILES = $(CSDISTFILES)	\

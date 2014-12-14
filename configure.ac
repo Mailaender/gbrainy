@@ -60,13 +60,6 @@ else
   AC_MSG_RESULT([found])
 fi
 
-if ! pkg-config --atleast-version=2.11 mono; then
-   CSC_DEFINES="$CSC_DEFINES -d:CSHARP_STATIC"
-   csharp_static="yes"
-else
-   csharp_static="no"
-fi
-
 
 dnl -- check for various mono assemblies that we need.
 
@@ -87,7 +80,7 @@ done
 dnl --- Required libraries
 
 GTKSHARP_REQUIRED=2.99.1
-MONO_REQUIRED=1.1.7
+MONO_REQUIRED=3.0.0
 MONO_ADDINS=0.2.0
 CANBERRA_GTK_REQUIRED=0.26
 
@@ -226,6 +219,5 @@ tools/Defines.cs
 echo "Mono-addins:		${enable_addins_sharp}"
 echo "NUnit:			${enable_tests}"
 echo "Debug enabled:		${enable_debug}"
-echo "Mono.CSharp static:	${csharp_static}"
 
 

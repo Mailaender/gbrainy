@@ -36,12 +36,7 @@ namespace gbrainy.Core.Services
 			// Default services
 			services.Add (typeof (ITranslations), new TranslationsCatalog ());
 			services.Add (typeof (IConfiguration), new MemoryConfiguration ());
-
-#if CSHARP_STATIC
-			services.Add (typeof (ICSharpCompiler), new CSharpCompilerStatic ());
-#else
 			services.Add (typeof (ICSharpCompiler), new CSharpCompiler ());
-#endif
 		}
 
 		public void RemoveService <T> () where T : class, IService
