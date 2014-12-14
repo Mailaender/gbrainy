@@ -44,10 +44,11 @@
           </packing>
         </child>
         <child>
-          <object class="GtkVBox" id="players_vbox">
+          <object class="GtkBox" id="players_vbox">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="border_width">5</property>
+            <property name="orientation">vertical</property>
             <child>
               <object class="GtkLabel" id="label_playerhistory">
                 <property name="width_request">500</property>
@@ -65,10 +66,11 @@
               </packing>
             </child>
             <child>
-              <object class="GtkVBox" id="history_preview">
+              <object class="GtkBox" id="history_preview">
                 <property name="height_request">500</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="orientation">vertical</property>
                 <child>
                   <placeholder/>
                 </child>
@@ -80,7 +82,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkHBox" id="hbox10">
+              <object class="GtkBox" id="hbox10">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="spacing">5</property>

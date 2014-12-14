@@ -61,6 +61,7 @@ namespace gbrainy.Clients.Classical.Dialogs
 			label_playerhistory.Text = String.Format (Catalog.GetString ("{0} {1}"), intro, built);
 
 			drawing_area = new CairoPreview (translations, history);
+            drawing_area.SetSizeRequest (history_preview.WidthRequest, history_preview.HeightRequest);
 			history_preview.Add (drawing_area);
 			drawing_area.Visible = true;
 
@@ -126,7 +127,7 @@ namespace gbrainy.Clients.Classical.Dialogs
 
 				CairoContextEx cr = new CairoContextEx (cc.Handle);
 				cr.PangoFontDescription = PangoContext.FontDescription;
-                    w = Window.Width;
+                w = Window.Width;
                 h = Window.Height;
 
 				nh = nw = Math.Min (w, h);
