@@ -36,7 +36,7 @@ namespace gbrainy.Clients.Classical.Widgets
 
 		public virtual event EventHandler FileSelectedChanged;
 
-		public BrowseFile (HBox parent, string file, bool browse_file)
+		public BrowseFile (Box parent, string file, bool browse_file)
 		{
 			this.browse_file = browse_file;
 			filename = new Entry ();

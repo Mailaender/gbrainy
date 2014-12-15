@@ -29,7 +29,7 @@ namespace gbrainy.Clients.Classical.Dialogs
 {
 	public class PdfExportDialog : BuilderDialog
 	{
-		[Builder.Object] Gtk.HBox hbox_file;
+		[Builder.Object] Gtk.Box hbox_file;
 		[Builder.Object] Gtk.SpinButton games_spinbutton;
 		[Builder.Object] Gtk.CheckButton colorblindcheckbutton;
 		[Builder.Object] Gtk.RadioButton rb_easy;
