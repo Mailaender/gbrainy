@@ -410,6 +410,15 @@
 		<_rationale>It is the only instrument that does not have keys.</_rationale>
 	</analogy>
 
+	<analogy>
+		<_question type = "MultipleOptions">Which of the following words does not belong in this group?</_question>
+		<_answer>Cow</_answer>
+		<_answer>Leopard</_answer>
+		<_answer>Dog</_answer>
+		<_answer correct = "yes">Snake</_answer>
+		<_rationale>It is the only animal that does not have legs and it is not a mammal.</_rationale>
+	</analogy>
+
 	<!--- Pair of words options -->
 
 	<analogy>
