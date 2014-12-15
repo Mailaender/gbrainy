@@ -27,7 +27,7 @@ namespace gbrainy.Clients.Classical.Dialogs
 	public class HigMessageDialog : Gtk.Dialog
 	{
 		Gtk.AccelGroup accel_group;
-		Gtk.VBox extra_widget_vbox;
+		Gtk.Box extra_widget_vbox;
 		Gtk.Image image;
 
 		public HigMessageDialog (Gtk.Window parent,
@@ -37,12 +37,11 @@ namespace gbrainy.Clients.Classical.Dialogs
 			                 string          header,
 			                 string          msg) : base ()
 		{
-			//HasSeparator = false;
 			BorderWidth = 5;
 			Resizable = false;
 			Title = string.Empty;
 
-			//VBox.Spacing = 12;
+			ContentArea.Spacing = 12;
 			ActionArea.Layout = Gtk.ButtonBoxStyle.End;
 
 			accel_group = new Gtk.AccelGroup ();
@@ -51,7 +50,7 @@ namespace gbrainy.Clients.Classical.Dialogs
 			Gtk.HBox hbox = new Gtk.HBox (false, 12);
 			hbox.BorderWidth = 5;
 			hbox.Show ();
-			//VBox.PackStart (hbox, false, false, 0);
+			ContentArea.PackStart (hbox, false, false, 0);
 
 			switch (type) {
 			case Gtk.MessageType.Error:
@@ -81,7 +80,7 @@ namespace gbrainy.Clients.Classical.Dialogs
 				hbox.PackStart (image, false, false, 0);
 			}
 
-			Gtk.VBox label_vbox = new Gtk.VBox (false, 0);
+			Gtk.Box label_vbox = new Gtk.Box (Orientation.Vertical, 0);
 			label_vbox.Show ();
 			hbox.PackStart (label_vbox, true, true, 0);
 
@@ -109,7 +108,7 @@ namespace gbrainy.Clients.Classical.Dialogs
 			label.Show ();
 			label_vbox.PackStart (label, false, false, 0);
 
-			extra_widget_vbox = new Gtk.VBox (false, 0);
+			extra_widget_vbox = new Gtk.Box (Orientation.Vertical, 0);
 			extra_widget_vbox.Show();
 			label_vbox.PackStart (extra_widget_vbox, true, true, 12);
 
