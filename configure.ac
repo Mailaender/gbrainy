@@ -81,7 +81,6 @@ dnl --- Required libraries
 
 GTKSHARP_REQUIRED=2.99.1
 MONO_REQUIRED=3.0.0
-MONO_ADDINS=0.2.0
 CANBERRA_GTK_REQUIRED=0.26
 
 PKG_CHECK_MODULES(GBRAINY_CORE, mono >= $MONO_REQUIRED)
@@ -90,26 +89,6 @@ PKG_CHECK_MODULES(GBRAINY, gtk-sharp-3.0 >= $GTKSHARP_REQUIRED)
 PKG_CHECK_MODULES(GBRAINY, libcanberra-gtk-3-0  >= $CANBERRA_GTK_REQUIRED)
 AC_SUBST(GBRAINY_LIBS)
 
-AC_ARG_ENABLE(addins, AC_HELP_STRING([--disable-addins], [Disable mono-addins support]), , enable_addins="no")
-
-enable_addins_sharp="${enable_addins}"
-
- PKG_CHECK_MODULES(MONO_ADDINS,
-	mono-addins0.2 >= $MONO_ADDINS
-	mono-addins0.2-setup >= $MONO_ADDINS
-	mono-addins0.2-gui >= $MONO_ADDINS,
-	enable_addins_sharp="$enable_addins_sharp", enable_addins_sharp=no)
-
-if test "x$enable_addins" = "xyes" -a "x$enable_addins_sharp" = "xno"; then
-	AC_MSG_ERROR([mono-addins was not found or is not up to date. Please install mono-addins of at least version $MONO_ADDINS, or disable mono-addins support by --disable-addins])
-fi
-
-if test "x$enable_addins_sharp" = "xyes"; then
-	AC_SUBST(MONO_ADDINS_LIBS)
-	CSC_DEFINES="$CSC_DEFINES -d:MONO_ADDINS"
-fi
-
-AM_CONDITIONAL(ENABLE_ADDINS, test "x$enable_addins_sharp" = "xyes")
 
 PKG_CHECK_MODULES(GBRAINY_CHECK, librsvg-2.0)
 
@@ -216,7 +195,6 @@ help/Makefile
 tools/Defines.cs
 ])
 
-echo "Mono-addins:		${enable_addins_sharp}"
 echo "NUnit:			${enable_tests}"
 echo "Debug enabled:		${enable_debug}"
 

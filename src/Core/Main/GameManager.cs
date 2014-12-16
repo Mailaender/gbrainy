@@ -22,12 +22,6 @@ using System.Collections.Generic;
 using System.Reflection;
 
 using gbrainy.Core.Services;
-
-#if MONO_ADDINS
-using Mono.Addins;
-using Mono.Addins.Setup;
-#endif
-
 using gbrainy.Core.Main.Verbal;
 using gbrainy.Core.Main.Xml;
 
@@ -177,60 +171,6 @@ namespace gbrainy.Core.Main
 			}
 		}
 
-		// Load Mono plugins
-		public void LoadPlugins ()
-		{
-
-	#if MONO_ADDINS
-			try {
-				ExtensionNodeList addins;
-				Game game;
-				Type [] type = new Type [1];
-				string dir = System.IO.Path.Combine (Environment.GetFolderPath (Environment.SpecialFolder.ApplicationData), "gbrainy");
-
-				AddinManager.Initialize (dir);
-				AddinManager.Registry.Update (null);
-				new SetupService (AddinManager.Registry);
-
-				addins = AddinManager.GetExtensionNodes ("/gbrainy/games/logic");
-				foreach (TypeExtensionNode node in addins) {
-					game = (Game) node.CreateInstance ();
-					Console.WriteLine ("Loading external logic game: {0}", game);
-					type [0] = game.GetType ();
-					AddGamesAndVariations (type);
-				}
-
-				addins = AddinManager.GetExtensionNodes ("/gbrainy/games/memory");
-				foreach (TypeExtensionNode node in addins) {
-					game = (Game) node.CreateInstance ();
-					Console.WriteLine ("Loading external memory game: {0}", game);
-					type [0] = game.GetType ();
-					AddGamesAndVariations (type);
-				}
-
-				addins = AddinManager.GetExtensionNodes ("/gbrainy/games/calculation");
-				foreach (TypeExtensionNode node in addins) {
-					game = (Game) node.CreateInstance ();
-					Console.WriteLine ("Loading external calculation game: {0}", game);
-					type [0] = game.GetType ();
-					AddGamesAndVariations (type);
-				}
-
-				addins = AddinManager.GetExtensionNodes ("/gbrainy/games/verbal");
-				foreach (TypeExtensionNode node in addins) {
-					game = (Game) node.CreateInstance ();
-					Console.WriteLine ("Loading external verbal analogy game: {0}", game);
-					type [0] = game.GetType ();
-					AddGamesAndVariations (type);
-				}
-			}
-			catch (Exception e)
-			{
-				Console.WriteLine ("GameManager.LoadPlugins. Error loading plugins. Error {0}", e);
-			}
-	#endif
-		}
-
 		// Load an XML file with analogies
 		public void LoadVerbalAnalogies (string file)
 		{
@@ -247,12 +187,6 @@ namespace gbrainy.Core.Main
 		public string GetGamesSummary (ITranslations translations)
 		{
 			String s = string.Empty;
-	#if MONO_ADDINS
-			s += translations.GetString ("Extensions database:") + " " +
-					System.IO.Path.Combine (Environment.GetFolderPath (Environment.SpecialFolder.ApplicationData), "gbrainy");
-
-			s += Environment.NewLine;
-	#endif
 			// Translators: 'Games registered' is the games know to gbrainy (build-in and load from addins-in and external files)
 			s += String.Format (translations.GetString ("{0} games registered: {1} logic puzzles, {2} calculation trainers, {3} memory trainers, {4} verbal analogies"),
 					cnt_logic + cnt_memory + cnt_calculation + cnt_verbal,
@@ -297,4 +231,4 @@ namespace gbrainy.Core.Main
 			return cnt;
 		}
 	}
-}
+}       

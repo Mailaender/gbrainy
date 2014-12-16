@@ -21,8 +21,7 @@ GBRAINY_CSDISTFILES =					\
 
 ASSEMBLIES = \
 	 $(GBRAINY_LIBS)    		\
-	 $(MONO_ADDINS_LIBS)    	\
-	-r:../../gbrainy.Core.dll	\
+        -r:../../gbrainy.Core.dll	\
 	-r:Mono.Posix
 
 RESOURCES =										\

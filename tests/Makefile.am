@@ -32,7 +32,6 @@ if ENABLE_TESTS
 
 ASSEMBLIES = \
 	$(NUNIT_LIBS)			\
-	$(MONO_ADDINS_LIBS)		\
 	-r:$(top_builddir)/src/gbrainy.Core.dll	\
 	-r:$(top_builddir)/src/gbrainy.exe
 

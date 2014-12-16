@@ -29,7 +29,6 @@ GBRAINY_CSDISTFILES =		\
 
 ASSEMBLIES = \
 	 $(GBRAINY_LIBS)    		\
-	 $(MONO_ADDINS_LIBS)    	\
 	-r:System.Web			\
 	-r:Mono.Cairo.dll		\
 	-r:../../gbrainy.Core.dll	\

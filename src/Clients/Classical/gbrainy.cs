@@ -60,7 +60,6 @@ namespace gbrainy.Clients.Classical
 		[Builder.Object] Gtk.MenuItem calculation_menuitem;
 		[Builder.Object] Gtk.MenuItem memory_menuitem;
 		[Builder.Object] Gtk.MenuItem verbal_menuitem;
-		[Builder.Object] Gtk.MenuItem extensions_menuitem;
 		[Builder.Object] Gtk.RadioMenuItem vertical_radiomenuitem;
 		[Builder.Object] Gtk.RadioMenuItem horizontal_radiomenuitem;
 		[Builder.Object] Gtk.MenuItem toolbar_orientation_menuitem;
@@ -71,7 +70,6 @@ namespace gbrainy.Clients.Classical
 		GameSession session;
 		bool full_screen;
 		GameSession.Types initial_session;
-		static bool pluggins_loaded;
 
 		public readonly int MIN_TRANSLATION = 80;
 
@@ -118,12 +116,6 @@ namespace gbrainy.Clients.Classical
 			gm.LoadAssemblyGames (Defines.GAME_ASSEMBLY);
 			gm.LoadVerbalAnalogies (System.IO.Path.Combine (Defines.DATA_DIR, Defines.VERBAL_ANALOGIES));
 			gm.LoadGamesFromXml (System.IO.Path.Combine (Defines.DATA_DIR, Defines.GAMES_FILE));
-
-			if (Preferences.Get <bool> (Preferences.LoadPlugginsKey))
-			{			
-				gm.LoadPlugins ();
-				pluggins_loaded = true;
-			}
 		}
 
 		void BuildUI ()
@@ -191,20 +183,6 @@ namespace gbrainy.Clients.Classical
 			if (show_toolbar == false)
 				showtoolbar_menuitem.Active = false;
 
-		#if MONO_ADDINS
-			extensions_menuitem.Activated += delegate (object sender, EventArgs ar) 
-			{
-				if (pluggins_loaded == false)
-				{			
-					session.GameManager.LoadPlugins ();
-				}
-				Mono.Addins.Gui.AddinManagerWindow.Run (app_window);
-				GameManagerPreload (session.GameManager);
-				CustomGameDialog.Clear ();
-			};
-		#else
-			extensions_menuitem.Visible = false;
-		#endif
 			ActiveInputControls (false);
 		}
 

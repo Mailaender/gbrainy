@@ -94,8 +94,7 @@ REFS =  \
 	-r:System \
 	-r:Mono.Posix			\
 	-r:Mono.CSharp.dll		\
-	 $(GBRAINY_LIBS)    		\
-	 $(MONO_ADDINS_LIBS)
+	 $(GBRAINY_LIBS)
 
 RES_CSFLAGS = $(foreach res, $(RES), -resource:$(res))
 

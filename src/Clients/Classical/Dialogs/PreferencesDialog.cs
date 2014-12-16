@@ -38,7 +38,6 @@ namespace gbrainy.Clients.Classical.Dialogs
 		[Builder.Object] Gtk.RadioButton rb_master;
 		[Builder.Object] Gtk.ComboBox themes_combobox;
 		[Builder.Object] Gtk.CheckButton englishcheckbutton;
-		[Builder.Object] Gtk.CheckButton loadextensionscheckbutton;
 		[Builder.Object] Gtk.CheckButton usesoundscheckbutton;
 
 		const int COLUMN_VALUE = 1;
@@ -53,7 +52,6 @@ namespace gbrainy.Clients.Classical.Dialogs
 			minplayedspinbutton.Value = Preferences.Get <int> (Preferences.MinPlayedGamesKey);
 			colorblindcheckbutton.Active = Preferences.Get <bool> (Preferences.ColorBlindKey);
 			englishcheckbutton.Active = Preferences.Get <bool> (Preferences.EnglishKey);
-			loadextensionscheckbutton.Active = Preferences.Get <bool> (Preferences.LoadPlugginsKey);
 			usesoundscheckbutton.Active = Preferences.Get <bool> (Preferences.SoundsKey);
 
 			switch ((GameDifficulty) Preferences.Get <int> (Preferences.DifficultyKey)) {
@@ -91,10 +89,6 @@ namespace gbrainy.Clients.Classical.Dialogs
 				}
 				more = store.IterNext (ref iter);
 			}
-
-			#if !MONO_ADDINS
-				loadextensionscheckbutton.Visible = false;
-			#endif
 		}
 
 		private GameDifficulty Difficulty {
@@ -134,7 +128,6 @@ namespace gbrainy.Clients.Classical.Dialogs
 			Preferences.Set <int>  (Preferences.MinPlayedGamesKey, (int) minplayedspinbutton.Value);
 			Preferences.Set <bool> (Preferences.ColorBlindKey, colorblindcheckbutton.Active);
 			Preferences.Set <bool> (Preferences.EnglishKey, englishcheckbutton.Active);
-			Preferences.Set <bool> (Preferences.LoadPlugginsKey, loadextensionscheckbutton.Active);
 			Preferences.Set <bool> (Preferences.SoundsKey, usesoundscheckbutton.Active);
 
 			TreeIter iter;
